@@ -14,7 +14,7 @@
     // Cordova is ready
     //
     var nowcompass = 0;
-    var timecount = 0;
+    var timecount = 3;
     var loopok = 0;
     var correctnumber = 0;
     var initialplus = 0;
@@ -43,7 +43,7 @@
     function play()
     {
     	timeme = 0;
-	    timecount = 0;
+	    timecount = 3;
 	    correctnumber = Math.floor(Math.random()*359);
 	    initialplus = Math.floor(Math.random()*correctnumber);
 	    secplus = (correctnumber - initialplus);
@@ -60,8 +60,8 @@
     
     	if(nowcompass == correctnumber)
     	{
-    		document.getElementById("content").innerHTML = '<center>Math is : ' + initialplus + ' + ' + secplus + ' = ? <br> Hold On! : ' + (3-timecount);
-	    	if(timecount == 2)
+    		document.getElementById("content").innerHTML = '<center>Math is : ' + initialplus + ' + ' + secplus + ' = ? <br> Hold On! : ' + timecount;
+	    	if(timecount == 0)
 	    	{
 	    		 playmode = 0;
 	    		 document.getElementById("mytime").innerHTML = '';
@@ -71,14 +71,15 @@
 	    	}
 	    	else
 	    	{
-		    	timecount = timecount + 1;
+		    	timecount = timecount - 1;
 		    	setTimeout(function(){myloop()},1000);
 	    	}
 	    	
     	}
     	else
     	{
-	    	timecount = 0;
+    		document.getElementById("content").innerHTML = '<center>Math is : ' + initialplus + ' + ' + secplus + ' = ?';
+	    	timecount = 3;
 	    	setTimeout(function(){myloop()},1000);
 	    	
     	}

@@ -13,8 +13,34 @@
 
     // Cordova is ready
     //
+    var timecount = 0;
+    var loopok = 0;
+    var correctnumber = 0;
+    var initialplus = 0;
+    var secplus = 0;
+    function onDeviceReady() {
+    	navigator.compass.getCurrentHeading(onInitSucc, onError)
+    	document.getElementById("showdata").innerHTML = '<center>Loading...</center>';
+    	    }
     
-    function myloop(){
+    
+    function play()
+    {
+	    timecount = 0;
+	    correctnumber = Math.floor((Math.random()*359);
+	    initialplus = Math.floor((Math.random()*correctnumber);
+	    secplus = 359 - initialplus;
+	    document.getElementById("showdata").innerHTML = '<center>Number is : ' + initialplus + ' + ' + secplus + ' = ?';
+    }
+    function onInitSucc()
+    {
+	    document.getElementById("showdata").innerHTML = '<center>Welcome to My Game<br><input type="button" value="Play Game" OnClick="play()"></center>';
+	    
+    }
+    
+    
+    
+    /*function myloop(){
 	    navigator.compass.getCurrentHeading(onSuccess, onError)
 	    setTimeout(function(){myloop()},100)
 	    
@@ -36,13 +62,14 @@
     //
     function onError(compassError) {
         alert('Compass Error: ' + compassError.code);
-    }
+    }*/
 
     </script>
   </head>
   <body>
-    <h1>Example</h1>
-    <p>getCurrentHeading</p>
+    <h1>Welcome to Compass Game</h1>
+    <p>Score : 0</p><br>
     <div id="content"></div>
+    <div id="showdata"></div>
   </body>
 </html>

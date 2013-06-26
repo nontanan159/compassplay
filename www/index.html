@@ -14,7 +14,7 @@
     // Cordova is ready
     //
     var nowcompass = 0;
-    var timecount = 3;
+    var timecount = 2;
     var loopok = 0;
     var correctnumber = 0;
     var initialplus = 0;
@@ -43,7 +43,7 @@
     function play()
     {
     	timeme = 0;
-	    timecount = 3;
+	    timecount = 2;
 	    correctnumber = Math.floor(Math.random()*359);
 	    initialplus = Math.floor(Math.random()*correctnumber);
 	    secplus = (correctnumber - initialplus);
@@ -59,12 +59,12 @@
     	if(nowcompass == correctnumber)
     	{
     		document.getElementById("content").innerHTML = '<center>Math is : ' + initialplus + ' + ' + secplus + ' = ? <br> Hold On! : ' + timecount;
-	    	if(timecount <= 1)
+	    	if(timecount <= 0)
 	    	{
 	    		 playmode = 0;
 	    		 document.getElementById("mytime").innerHTML = '';
 	    		 document.getElementById("comme").innerHTML = '';
-		    	 document.getElementById("content").innerHTML = '<center>Finally<br>Used Time : ' + timeme + ' <br> Play again? <br> <input type="button" value="Play Game" OnClick="play()"></center>';
+		    	 document.getElementById("content").innerHTML = '<center>Finally<br>Used Time : ' + timeme.toFixed(1) + ' <br> Play again? <br> <input type="button" value="Play Game" OnClick="play()"></center>';
 		    	
 	    	}
 	    	else
@@ -77,7 +77,7 @@
     	else
     	{
     		document.getElementById("content").innerHTML = '<center>Math is : ' + initialplus + ' + ' + secplus + ' = ?';
-	    	timecount = 3;
+	    	timecount = 2;
 	    	setTimeout(function(){myloop()},1000);
 	    	
     	}
@@ -103,7 +103,7 @@
         if(playmode == 1)
 	    {
 	    	timeme = timeme + 0.1;
-	    	document.getElementById("mytime").innerHTML = 'Time : ' + timeme + ' second';
+	    	document.getElementById("mytime").innerHTML = 'Time : ' + timeme.toFixed(1) + ' second';
 	    	setTimeout(function(){compassloop()},100);
 	    }
     }

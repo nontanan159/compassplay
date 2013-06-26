@@ -19,7 +19,7 @@
     var correctnumber = 0;
     var initialplus = 0;
     var secplus = 0;
-    var timeme = 0;
+    var timeme = 0.0;
     var playmode = 0;
     
     
@@ -55,13 +55,11 @@
     }
     
     function myloop(){
-    	timeme = timeme + 1;
-    	document.getElementById("mytime").innerHTML = 'Time : ' + timeme + ' second';
-    
+    	    
     	if(nowcompass == correctnumber)
     	{
     		document.getElementById("content").innerHTML = '<center>Math is : ' + initialplus + ' + ' + secplus + ' = ? <br> Hold On! : ' + timecount;
-	    	if(timecount == 0)
+	    	if(timecount <= 1)
 	    	{
 	    		 playmode = 0;
 	    		 document.getElementById("mytime").innerHTML = '';
@@ -98,11 +96,14 @@
     
     
     function onSuccess(heading) {
+    
         //alert('Heading: ' + heading.magneticHeading);
         nowcompass = Math.floor(heading.magneticHeading);
         document.getElementById("comme").innerHTML = '<br>Answer is : ' + nowcompass;
         if(playmode == 1)
 	    {
+	    	timeme = timeme + 0.1;
+	    	document.getElementById("mytime").innerHTML = 'Time : ' + timeme + ' second';
 	    	setTimeout(function(){compassloop()},100);
 	    }
     }

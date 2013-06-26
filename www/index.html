@@ -18,6 +18,8 @@
     var correctnumber = 0;
     var initialplus = 0;
     var secplus = 0;
+    var timeme = 0;
+    var playmode = 0;
     
     
     
@@ -34,21 +36,62 @@
     }
     
     function onError(compassError) {
-        alert('Compass Error: ' + compassError.code);
+        //alert('Compass Error: ' + compassError.code);
     }
     
     function play()
     {
+    	timeme = 0;
 	    timecount = 0;
 	    correctnumber = Math.floor(Math.random()*359);
 	    initialplus = Math.floor(Math.random()*correctnumber);
 	    secplus = (359 - initialplus);
-	    document.getElementById("content").innerHTML = '<center>Number is : ' + initialplus + ' + ' + secplus + ' = ?';
+	    document.getElementById("content").innerHTML = '<center>Math is : ' + initialplus + ' + ' + secplus + ' = ?';
+	    setTimeout(function(){myloop()},1000)
+	    setTimeout(function(){compassloop()},100)
+	    
+	    playmode = 1;
     }
     
-    
-    
-    
+    function myloop(){
+    	timeme = timeme + 1;
+    	if(Math.floor(heading.magneticHeading) == correctnumber)
+    	{
+    		document.getElementById("content").innerHTML = '<center>Math is : ' + initialplus + ' + ' + secplus + ' = ? <br> Hold On! : ' + (3-timecount);
+	    	if(timecount == 2)
+	    	{
+	    		 playmode = 0;
+		    	 document.getElementById("content").innerHTML = '<center>Finally<br>Used Time : ' + timeme + ' <br> Play again? <br> <input type="button" value="Play Game" OnClick="play()"></center>';
+		    	
+	    	}
+	    	else
+	    	{
+		    	timecount = timecount + 1;
+		    	setTimeout(function(){myloop()},1000)
+	    	}
+	    	
+    	}
+    	else
+    	{
+	    	timecount = 0;
+	    	setTimeout(function(){myloop()},1000)
+    	}
+    	
+    	
+    }
+    function compassloop(){
+	    navigator.compass.getCurrentHeading(onSuccess, onError)
+	    
+	    
+    }
+    function onSuccess(heading) {
+        //alert('Heading: ' + heading.magneticHeading);
+        document.getElementById("comme").innerHTML = '<br>Answer is : ' + Math.floor(heading.magneticHeading);
+        if(playmode == 1)
+	    {
+	    	setTimeout(function(){compassloop()},100)
+	    }
+    }
     
     /*function myloop(){
 	    navigator.compass.getCurrentHeading(onSuccess, onError)
@@ -81,5 +124,6 @@
     <h1>Welcome to Compass Game</h1>
     <p>Score : 0</p><br>
     <div id="content"></div>
+    <div id="comme"></div>
   </body>
 </html>

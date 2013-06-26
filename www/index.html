@@ -13,10 +13,17 @@
 
     // Cordova is ready
     //
+    
+    function myloop(){
+	    navigator.compass.getCurrentHeading(onSuccess, onError)
+	    setTimeout(function(){myloop()},1000)
+	    
+    }
     function onDeviceReady() {
         //navigator.compass.getCurrentHeading(onSuccess, onError);
-        setTimeout(function(){navigator.compass.getCurrentHeading(onSuccess, onError)},1000)
+        setTimeout(function(){myloop()},1000)
     }
+    
 
     // onSuccess: Get the current heading
     //

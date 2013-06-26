@@ -16,12 +16,12 @@
     
     function myloop(){
 	    navigator.compass.getCurrentHeading(onSuccess, onError)
-	    setTimeout(function(){myloop()},1000)
+	    setTimeout(function(){myloop()},100)
 	    
     }
     function onDeviceReady() {
         //navigator.compass.getCurrentHeading(onSuccess, onError);
-        setTimeout(function(){myloop()},1000)
+        setTimeout(function(){myloop()},100)
     }
     
 
@@ -29,7 +29,7 @@
     //
     function onSuccess(heading) {
         //alert('Heading: ' + heading.magneticHeading);
-        document.getElementById("content").innerHTML = heading.magneticHeading;
+        document.getElementById("content").innerHTML = Math.floor(heading.magneticHeading);
     }
 
     // onError: Failed to get the heading

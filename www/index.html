@@ -22,9 +22,10 @@
     
     
     function onDeviceReady() {
-    	navigator.compass.getCurrentHeading(onInitSucc, onError)
     	document.getElementById("content").innerHTML = '<center>Loading...</center>';
-    	    }
+
+    	navigator.compass.getCurrentHeading(onInitSucc, onError);
+    	    	    }
     
     
     function play()

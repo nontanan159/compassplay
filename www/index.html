@@ -45,7 +45,7 @@
 	    timecount = 0;
 	    correctnumber = Math.floor(Math.random()*359);
 	    initialplus = Math.floor(Math.random()*correctnumber);
-	    secplus = (359 - initialplus);
+	    secplus = (correctnumber - initialplus);
 	    document.getElementById("content").innerHTML = '<center>Math is : ' + initialplus + ' + ' + secplus + ' = ?';
 	    setTimeout(function(){myloop()},1000)
 	    setTimeout(function(){compassloop()},100)
@@ -55,12 +55,15 @@
     
     function myloop(){
     	timeme = timeme + 1;
+    	document.getElementById("mytime").innerHTML = 'Time : ' + timeme + ' second';
     	if(Math.floor(heading.magneticHeading) == correctnumber)
     	{
     		document.getElementById("content").innerHTML = '<center>Math is : ' + initialplus + ' + ' + secplus + ' = ? <br> Hold On! : ' + (3-timecount);
 	    	if(timecount == 2)
 	    	{
 	    		 playmode = 0;
+	    		 document.getElementById("mytime").innerHTML = '';
+	    		 document.getElementById("comme").innerHTML = '';
 		    	 document.getElementById("content").innerHTML = '<center>Finally<br>Used Time : ' + timeme + ' <br> Play again? <br> <input type="button" value="Play Game" OnClick="play()"></center>';
 		    	
 	    	}
@@ -124,6 +127,7 @@
     <h1>Welcome to Compass Game</h1>
     <p></p><br>
     <div id="content"></div>
+    <div id="mytime"></div>
     <div id="comme"></div>
   </body>
 </html>

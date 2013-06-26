@@ -18,9 +18,12 @@
     var correctnumber = 0;
     var initialplus = 0;
     var secplus = 0;
+    
+    
+    
     function onDeviceReady() {
     	navigator.compass.getCurrentHeading(onInitSucc, onError)
-    	document.getElementById("showdata").innerHTML = '<center>Loading...</center>';
+    	document.getElementById("content").innerHTML = '<center>Loading...</center>';
     	    }
     
     
@@ -30,11 +33,12 @@
 	    correctnumber = Math.floor((Math.random()*359);
 	    initialplus = Math.floor((Math.random()*correctnumber);
 	    secplus = 359 - initialplus;
-	    document.getElementById("showdata").innerHTML = '<center>Number is : ' + initialplus + ' + ' + secplus + ' = ?';
+	    document.getElementById("content").innerHTML = '<center>Number is : ' + initialplus + ' + ' + secplus + ' = ?';
     }
+    
     function onInitSucc()
     {
-	    document.getElementById("showdata").innerHTML = '<center>Welcome to My Game<br><input type="button" value="Play Game" OnClick="play()"></center>';
+	    document.getElementById("content").innerHTML = '<center>Welcome to My Game<br><input type="button" value="Play Game" OnClick="play()"></center>';
 	    
     }
     
@@ -63,6 +67,9 @@
     function onError(compassError) {
         alert('Compass Error: ' + compassError.code);
     }*/
+    function onError(compassError) {
+        alert('Compass Error: ' + compassError.code);
+    }
 
     </script>
   </head>
@@ -70,6 +77,5 @@
     <h1>Welcome to Compass Game</h1>
     <p>Score : 0</p><br>
     <div id="content"></div>
-    <div id="showdata"></div>
   </body>
 </html>

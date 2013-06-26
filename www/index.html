@@ -13,6 +13,7 @@
 
     // Cordova is ready
     //
+    var nowcompass = 0;
     var timecount = 0;
     var loopok = 0;
     var correctnumber = 0;
@@ -56,7 +57,8 @@
     function myloop(){
     	timeme = timeme + 1;
     	document.getElementById("mytime").innerHTML = 'Time : ' + timeme + ' second';
-    	/*if(Math.floor(heading.magneticHeading) == correctnumber)
+    
+    	if(nowcompass == correctnumber)
     	{
     		document.getElementById("content").innerHTML = '<center>Math is : ' + initialplus + ' + ' + secplus + ' = ? <br> Hold On! : ' + (3-timecount);
 	    	if(timecount == 2)
@@ -77,9 +79,10 @@
     	else
     	{
 	    	timecount = 0;
+	    	setTimeout(function(){myloop()},1000);
 	    	
-    	}*/
-    	setTimeout(function(){myloop()},1000);
+    	}
+    	
     	
     	
     }
@@ -95,7 +98,8 @@
     
     function onSuccess(heading) {
         //alert('Heading: ' + heading.magneticHeading);
-        document.getElementById("comme").innerHTML = '<br>Answer is : ' + Math.floor(heading.magneticHeading);
+        nowcompass = Math.floor(heading.magneticHeading);
+        document.getElementById("comme").innerHTML = '<br>Answer is : ' + nowcompass;
         if(playmode == 1)
 	    {
 	    	setTimeout(function(){compassloop()},100);

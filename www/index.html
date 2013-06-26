@@ -14,13 +14,15 @@
     // Cordova is ready
     //
     function onDeviceReady() {
-        navigator.compass.getCurrentHeading(onSuccess, onError);
+        //navigator.compass.getCurrentHeading(onSuccess, onError);
+        setTimeout(function(){navigator.compass.getCurrentHeading(onSuccess, onError)},1000)
     }
 
     // onSuccess: Get the current heading
     //
     function onSuccess(heading) {
-        alert('Heading: ' + heading.magneticHeading);
+        //alert('Heading: ' + heading.magneticHeading);
+        document.getElementById("content").innerHTML = heading.magneticHeading;
     }
 
     // onError: Failed to get the heading
@@ -34,5 +36,6 @@
   <body>
     <h1>Example</h1>
     <p>getCurrentHeading</p>
+    <div id="content"></div>
   </body>
 </html>

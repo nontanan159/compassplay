@@ -47,8 +47,8 @@
 	    initialplus = Math.floor(Math.random()*correctnumber);
 	    secplus = (correctnumber - initialplus);
 	    document.getElementById("content").innerHTML = '<center>Math is : ' + initialplus + ' + ' + secplus + ' = ?';
-	    setTimeout(function(){myloop()},1000)
-	    setTimeout(function(){compassloop()},100)
+	    setTimeout(function(){myloop()},1000);
+	    setTimeout(function(){compassloop()},100);
 	    
 	    playmode = 1;
     }
@@ -70,14 +70,14 @@
 	    	else
 	    	{
 		    	timecount = timecount + 1;
-		    	setTimeout(function(){myloop()},1000)
+		    	setTimeout(function(){myloop()},1000);
 	    	}
 	    	
     	}
     	else
     	{
 	    	timecount = 0;
-	    	setTimeout(function(){myloop()},1000)
+	    	setTimeout(function(){myloop()},1000);
     	}
     	
     	
@@ -92,7 +92,7 @@
         document.getElementById("comme").innerHTML = '<br>Answer is : ' + Math.floor(heading.magneticHeading);
         if(playmode == 1)
 	    {
-	    	setTimeout(function(){compassloop()},100)
+	    	setTimeout(function(){compassloop()},100);
 	    }
     }
     

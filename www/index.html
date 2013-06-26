@@ -24,9 +24,18 @@
     function onDeviceReady() {
     	document.getElementById("content").innerHTML = '<center>Loading...</center>';
 
-    	//navigator.compass.getCurrentHeading(onInitSucc, onError);
+    	navigator.compass.getCurrentHeading(onInitSucc, onError);
     	    	    }
     
+    function onInitSucc()
+    {
+	    document.getElementById("content").innerHTML = '<center>Welcome to My Game<br><input type="button" value="Play Game" OnClick="play()"></center>';
+	    
+    }
+    
+    function onError(compassError) {
+        alert('Compass Error: ' + compassError.code);
+    }
     
     /*function play()
     {
@@ -37,11 +46,7 @@
 	    document.getElementById("content").innerHTML = '<center>Number is : ' + initialplus + ' + ' + secplus + ' = ?';
     }
     
-    function onInitSucc()
-    {
-	    document.getElementById("content").innerHTML = '<center>Welcome to My Game<br><input type="button" value="Play Game" OnClick="play()"></center>';
-	    
-    }*/
+    */
     
     
     
@@ -68,9 +73,7 @@
     function onError(compassError) {
         alert('Compass Error: ' + compassError.code);
     }*/
-    /*function onError(compassError) {
-        alert('Compass Error: ' + compassError.code);
-    }*/
+    
 
     </script>
   </head>
